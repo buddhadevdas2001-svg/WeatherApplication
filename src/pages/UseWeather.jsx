@@ -8,7 +8,7 @@ function useWeather() {
 
   const fetchWeather = useCallback(
     async (city) => {
-      if (!city.trim()) {
+      if (!city || !city.trim()) {
         setError("Please enter a city name");
         return;
       }
@@ -27,7 +27,7 @@ function useWeather() {
 
   const toggleUnit = useCallback(
     async (city) => {
-      if (!weather) return;
+      if (!weather || !city) return;
 
       const newUnit = unit === "metric" ? "imperial" : "metric";
       setUnit(newUnit);
